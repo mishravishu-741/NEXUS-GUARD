@@ -1,0 +1,279 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-dark-950 text-dark-50 antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  * {
+    @apply border-dark-700;
+  }
+
+  ::selection {
+    @apply bg-primary-500/30 text-primary-100;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-dark-600 rounded-full hover:bg-dark-500;
+  }
+
+  ::-webkit-scrollbar-corner {
+    @apply bg-dark-900;
+  }
+}
+
+@layer components {
+  /* Button variants */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-900 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-500 focus:ring-primary-500 active:bg-primary-700;
+  }
+
+  .btn-secondary {
+    @apply btn bg-dark-700 text-dark-100 hover:bg-dark-600 focus:ring-dark-500 border border-dark-600 active:bg-dark-800;
+  }
+
+  .btn-danger {
+    @apply btn bg-danger-600 text-white hover:bg-danger-500 focus:ring-danger-500 active:bg-danger-700;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-dark-300 hover:bg-dark-800 focus:ring-dark-500 active:bg-dark-900;
+  }
+
+  .btn-outline {
+    @apply btn border-2 border-primary-500 text-primary-400 hover:bg-primary-500/10 focus:ring-primary-500 active:bg-primary-500/20;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs gap-1.5;
+  }
+
+  .btn-lg {
+    @apply px-6 py-3 text-base gap-2;
+  }
+
+  /* Input variants */
+  .input {
+    @apply w-full px-4 py-2.5 bg-dark-800 border border-dark-600 rounded-lg text-dark-50 placeholder-dark-500 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .input-error {
+    @apply border-danger-500 focus:ring-danger-500;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-dark-300 mb-1.5;
+  }
+
+  .form-error {
+    @apply text-sm text-danger-400 mt-1;
+  }
+
+  /* Card variants */
+  .card {
+    @apply bg-dark-800/50 backdrop-blur-sm border border-dark-700 rounded-xl overflow-hidden transition-all duration-300 hover:border-dark-600;
+  }
+
+  .card-hover {
+    @apply card hover:shadow-xl hover:shadow-primary-500/5;
+  }
+
+  /* Badge variants */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply badge bg-primary-500/20 text-primary-300 border border-primary-500/30;
+  }
+
+  .badge-success {
+    @apply badge bg-success-500/20 text-success-300 border border-success-500/30;
+  }
+
+  .badge-warning {
+    @apply badge bg-warning-500/20 text-warning-300 border border-warning-500/30;
+  }
+
+  .badge-danger {
+    @apply badge bg-danger-500/20 text-danger-300 border border-danger-500/30;
+  }
+
+  .badge-info {
+    @apply badge bg-dark-600 text-dark-300 border border-dark-500;
+  }
+
+  /* Table styles */
+  .table-container {
+    @apply overflow-x-auto rounded-lg border border-dark-700;
+  }
+
+  .table {
+    @apply w-full text-sm;
+  }
+
+  .table th {
+    @apply px-4 py-3 text-left font-semibold text-dark-400 bg-dark-800/50 border-b border-dark-700 uppercase tracking-wider;
+  }
+
+  .table td {
+    @apply px-4 py-3 text-dark-200 border-b border-dark-700/50;
+  }
+
+  .table tbody tr {
+    @apply transition-colors duration-150 hover:bg-dark-800/50;
+  }
+
+  .table tbody tr:last-child td {
+    @apply border-b-0;
+  }
+
+  /* Sidebar styles */
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-dark-300 hover:text-dark-50 hover:bg-dark-800/50 transition-all duration-200 font-medium text-sm;
+  }
+
+  .sidebar-link-active {
+    @apply sidebar-link bg-primary-500/15 text-primary-400 border-l-4 border-primary-500;
+  }
+
+  /* Status indicators */
+  .status-dot {
+    @apply w-2 h-2 rounded-full;
+  }
+
+  .status-online {
+    @apply status-dot bg-success-500 box-shadow-0-0-0-2-bg-success-500/30;
+  }
+
+  .status-offline {
+    @apply status-dot bg-dark-500;
+  }
+
+  .status-warning {
+    @apply status-dot bg-warning-500 box-shadow-0-0-0-2-bg-warning-500/30;
+  }
+
+  .status-danger {
+    @apply status-dot bg-danger-500 box-shadow-0-0-0-2-bg-danger-500/30;
+  }
+
+  /* Loading spinner */
+  .spinner {
+    @apply animate-spin text-primary-500;
+  }
+
+  .spinner-lg {
+    @apply spinner h-8 w-8;
+  }
+
+  .spinner-sm {
+    @apply spinner h-4 w-4;
+  }
+
+  /* Glass morphism */
+  .glass {
+    @apply bg-dark-800/50 backdrop-blur-lg border border-dark-700/50;
+  }
+
+  .glass-strong {
+    @apply bg-dark-900/80 backdrop-blur-xl border border-dark-700;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-in {
+    animation: fadeIn 0.3s ease-out, slideIn 0.3s ease-out;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Recharts customization */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: #334155 !important;
+  stroke-dasharray: 4 4 !important;
+}
+
+.recharts-text {
+  fill: #94a3b8 !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.recharts-tooltip-wrapper {
+  outline: none !important;
+}
+
+.recharts-default-tooltip {
+  background: #1e293b !important;
+  border: 1px solid #334155 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+}
+
+.recharts-default-tooltip .recharts-tooltip-label {
+  color: #f1f5f9 !important;
+  font-weight: 600 !important;
+  border-bottom: 1px solid #334155 !important;
+  padding: 8px 12px !important;
+}
+
+.recharts-default-tooltip .recharts-tooltip-item {
+  color: #cbd5e1 !important;
+  padding: 4px 12px !important;
+}
+
+.recharts-legend-item-text {
+  color: #94a3b8 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 12px !important;
+}
+
+/* React Hot Toast customization */
+.toast-success {
+  @apply bg-success-900/90 border border-success-500/30 !important;
+}
+
+.toast-error {
+  @apply bg-danger-900/90 border border-danger-500/30 !important;
+}
+
+.toast-loading {
+  @apply bg-dark-800/90 border border-dark-500/30 !important;
+}

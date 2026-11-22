@@ -87,6 +87,7 @@ async def get_device(
     if current_user.role != UserRole.ADMIN and device.owner_id != current_user.id:
         raise HTTPException(status_code=403, detail="Not authorized to access this device")
 
+    await db.refresh(device)
     return device
 
 
@@ -152,6 +153,7 @@ async def register_device(
         description=f"User {current_user.username} registered device {device.name}"
     )
 
+    await db.refresh(device)
     return device
 
 
@@ -208,6 +210,7 @@ async def update_device(
             description=f"User {current_user.username} updated device {device.name}"
         )
 
+    await db.refresh(device)
     return device
 
 
@@ -272,6 +275,7 @@ async def approve_device(
         description=description
     )
 
+    await db.refresh(device)
     return device
 
 
@@ -338,6 +342,7 @@ async def revoke_device(
         description=f"Admin {current_user.username} revoked device {device.name}"
     )
 
+    await db.refresh(device)
     return device
 
 

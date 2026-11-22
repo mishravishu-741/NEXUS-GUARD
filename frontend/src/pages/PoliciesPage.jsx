@@ -70,7 +70,11 @@ export function PoliciesPage() {
       const params = {
         page: pagination.page,
         page_size: pagination.page_size,
-        ...filters,
+        ...Object.fromEntries(
+          Object.entries(filters).filter(([key, value]) =>
+            value !== '' && value !== null && value !== undefined
+          )
+        ),
       }
       const response = await api.get('/policies', { params })
       setPolicies(response.data.policies)

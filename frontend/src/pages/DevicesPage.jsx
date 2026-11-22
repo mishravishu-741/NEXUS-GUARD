@@ -73,6 +73,13 @@ export function DevicesPage() {
         page_size: pagination.page_size,
         ...filters,
       }
+
+      Object.keys(params).forEach(key => {
+        if (params[key] === '' || params[key] === null || params[key] === undefined) {
+          delete params[key]
+        }
+      })
+
       const response = await api.get('/devices', { params })
       setDevices(response.data.devices)
       setPagination(prev => ({

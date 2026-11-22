@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request
+﻿from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from contextlib import asynccontextmanager
@@ -127,6 +127,7 @@ app.include_router(threat_alerts.router)
 app.include_router(audit_logs.router)
 app.include_router(access_decisions.router)
 app.include_router(dashboard.router)
+app.include_router(monitoring.router)
 
 
 # Root endpoint

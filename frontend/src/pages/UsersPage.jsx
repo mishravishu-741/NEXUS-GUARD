@@ -51,7 +51,11 @@ export function UsersPage() {
       const params = {
         page: pagination.page,
         page_size: pagination.page_size,
-        ...filters,
+        ...Object.fromEntries(
+          Object.entries(filters).filter(([key, value]) =>
+            value !== '' && value !== null && value !== undefined
+          )
+        ),
       }
       const response = await api.get('/users', { params })
       setUsers(response.data)

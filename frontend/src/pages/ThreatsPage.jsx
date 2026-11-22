@@ -70,7 +70,9 @@ export function ThreatsPage() {
       const params = {
         page: pagination.page,
         page_size: pagination.page_size,
-        ...filters,
+        ...Object.fromEntries(
+          Object.entries(filters).filter(([key, value]) => value !== '')
+        ),
       }
       const response = await api.get('/threat-alerts', { params })
       setThreats(response.data.alerts)

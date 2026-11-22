@@ -65,7 +65,11 @@ export function SecurityEventsPage() {
       const params = {
         page: pagination.page,
         page_size: pagination.page_size,
-        ...filters,
+        ...Object.fromEntries(
+          Object.entries(filters).filter(([key, value]) =>
+            value !== '' && value !== null && value !== undefined
+          )
+        ),
       }
       if (filters.is_resolved !== '') {
         params.is_resolved = filters.is_resolved === 'true'
